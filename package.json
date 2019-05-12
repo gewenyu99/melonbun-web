@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js -p $PORT",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -c .storybook -o docs"
   },
   "keywords": [],
   "author": "",
