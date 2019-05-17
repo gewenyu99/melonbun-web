@@ -7,6 +7,11 @@ export const setRequestEntries = (requestList:any) => ({
     type: 'INITIALIZE_ALL_REQUESTS'
 });
 
+export const updateRequestEntry = (id, requestObj:any) => ({
+    payload: {id, requestObj},
+    type: 'UPDATE_REQUEST_ENTRY'
+});
+
 export function initializeRequestEntries() {
 
     return function (dispatch, getState) {
@@ -48,11 +53,11 @@ export function updateRequest(id:string, requestForm:IRequestForm) {
 
     return function (dispatch, getState) {
 
-        return RequestServices.updateRequest(id, requestForm).then(
+        return RequestServices.updateRequest(id, requestForm).then( //update database
             data => {
                 if(data) {
-                    dispatch(initializeRequestEntries());
-                    dispatch(NotificationActions.toastMessage("Request Updated. Please refresh page to view changes."))
+                    dispatch(updateRequestEntry(id, requestForm));    //update redux
+                    dispatch(NotificationActions.toastMessage("Request Updated."))
                 }
             }
         )
