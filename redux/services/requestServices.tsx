@@ -10,3 +10,15 @@ export function createNewRequest(requestForm:IRequestForm){
     //const data = JSON.stringify(requestForm);
     return RequestApi.create({data:requestForm});
 }
+
+export function deleteRequest(id){
+    return RequestApi.remove(id);
+}
+
+export function updateRequest(id:string, requestForm:IRequestForm){
+    return RequestApi.update(id, {data:requestForm});
+}
+
+export function getRequest(id:string){
+    return RequestApi.get(id);
+}

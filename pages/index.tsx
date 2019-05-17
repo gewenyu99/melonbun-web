@@ -8,7 +8,7 @@ import FavoritesBody from '../components/App/FavoritesBody'
 import {connect} from 'react-redux';
 import {IRequestInfo} from '../redux/dataTypes/request'
 import {onAddFavoriteRequest, onRemoveFavoriteRequest} from '../redux/actioncreators/profileActions';
-import {initializeRequestEntries, createNewRequest} from '../redux/actioncreators/RequestActions';
+import {initializeRequestEntries, createNewRequest, deleteRequest} from '../redux/actioncreators/RequestActions';
 
 interface StateProps {
     requestBuffer:IRequestInfo[];
@@ -21,6 +21,7 @@ interface DispatchProps {
     onRemoveFavoriteRequest: (requestId:string) => void;
     initializeRequestEntries: typeof initializeRequestEntries;
     createNewRequest: typeof createNewRequest;
+    deleteRequest: typeof deleteRequest;
 }
 
 type Props = StateProps & DispatchProps
@@ -33,7 +34,7 @@ export class Request extends Component<Props>{
     }
 
     render(){
-        const { isFetching, requestBuffer, favoriteRequests, onAddFavoriteRequest, onRemoveFavoriteRequest, createNewRequest} = this.props;
+        const { isFetching, requestBuffer, favoriteRequests, onAddFavoriteRequest, onRemoveFavoriteRequest, createNewRequest, deleteRequest} = this.props;
 
         const RequestPage = <RequestBody 
             requestBuffer={requestBuffer} 
@@ -41,6 +42,7 @@ export class Request extends Component<Props>{
             onAddFavoriteRequest={onAddFavoriteRequest}
             onRemoveFavoriteRequest={onRemoveFavoriteRequest}
             onItemCreate={createNewRequest}
+            onItemDelete={deleteRequest}
         />
         const FavoritesPage = <FavoritesBody
             requestBuffer={requestBuffer} 
@@ -77,6 +79,7 @@ const mapDispatchToProps = {
     onAddFavoriteRequest,
     onRemoveFavoriteRequest,
     initializeRequestEntries,
-    createNewRequest
+    createNewRequest,
+    deleteRequest
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Request);

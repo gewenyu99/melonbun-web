@@ -25,7 +25,7 @@ const sampleItemBuffer=[
 storiesOf('ItemListSelection', module)
     .add('ItemListSelection', () => (
             <ItemListSelection 
-                detailsHref={'/post?title='} 
+                detailsHref={'/requestInfo?title='} 
                 itemsBuffer={sampleItemBuffer} 
                 onItemDelete={action('Item_Delete')} 
                 onItemCreate={action('Item_Create')}

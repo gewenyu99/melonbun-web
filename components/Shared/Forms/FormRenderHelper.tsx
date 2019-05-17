@@ -6,7 +6,7 @@ export const FormType = {
     ITEM: 'ITEM'
 }
  
-export const RenderForm = (formType:string, {onFormSubmit, initialFormObj=undefined})=> {
+export const RenderForm = (formType:string, {onFormSubmit, initialFormObj})=> {
     switch(formType) {
 
         case FormType.REQUEST:

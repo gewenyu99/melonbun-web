@@ -12,7 +12,7 @@ export interface IInjectedSelectableProps{
 interface IEnhancedSelectableProps{
     /** callback called when user delete an item */
     onItemDelete?: (id:any) => void;
-    /** base link of card's details page. ie) '/post?title=' and an id will be appended */
+    /** base link of card's details page. ie) '/requestInfo?title=' and an id will be appended */
     detailsHref?: string;
     /** callback called when user creates a new item */
     onItemCreate: (newItem:any) => void;

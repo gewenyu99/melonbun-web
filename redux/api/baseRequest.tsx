@@ -4,7 +4,9 @@ export const BASE_API = "https://fdw9pvpyk6.execute-api.us-east-1.amazonaws.com/
 
 export const HttpVerb  = {
     GET: 'GET',
-    POST: 'POST'
+    POST: 'POST',
+    DELETE: 'DELETE',
+    PUT: 'PUT'
 }
 
 interface IAxiosConfig {

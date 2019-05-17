@@ -94,7 +94,7 @@ const requestBuffer = [
 storiesOf('RequestListSelection', module)
     .add('RequestListSelection', () => (
         <RequestListSelection
-            detailsHref={'/post?title='}
+            detailsHref={'/requestInfo?title='}
             requestBuffer={requestBuffer}
             formType={FormType.REQUEST}
             onItemDelete={action('Item_Delete')}

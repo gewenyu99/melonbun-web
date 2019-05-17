@@ -12,7 +12,7 @@ interface IProps {
     /** callback called when user removes a favorite request */
     onRemoveFavoriteRequest: (requestId:string) => void;
     /** callback called when user delete a request */
-    onItemDelete?: (id:any) => void;
+    onItemDelete: (id:any) => void;
     /** callback called when user creates a request */
     onItemCreate: (newItem:any) => void;
 }
@@ -21,8 +21,7 @@ const RequestBody = (props: IProps) => {
     return (
         <>
             <RequestListSelection
-                detailsHref={'/post?title='} 
-                onItemDelete={()=>{}} 
+                detailsHref={'/requestInfo?title='}
                 formType={FormType.REQUEST}
                 {...other}
             />

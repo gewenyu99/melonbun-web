@@ -13,10 +13,14 @@ const DialogStyle = (theme:any)=> ({
 });
 
 interface IProps {
+    /** Initial values of the form object  */
+    initialFormObj?: any;
     /** callback to create new Item. Pass form information */
     onSubmit: (newForm:any) => void;
     /** FormType constant from 'FormRenderHelper.tsx' that identifies type of form to be rendered */
     formType: string;
+    /** Children component will be displayed as the clicakble area under a ListItem, that triggers the popup */
+    children?: any;
 }
 
 interface IState {
@@ -49,7 +53,7 @@ export class PopupDialog extends Component<IProps, IState>{
 
     renderDialog = ()=>{
         const {isDialogOpen} = this.state;
-        const {formType} = this.props;
+        const {formType, initialFormObj} = this.props;
         
         return(
             <Dialog
@@ -62,7 +66,13 @@ export class PopupDialog extends Component<IProps, IState>{
                     <DialogContentText>
                         Content
                     </DialogContentText>
-                    {FormRenderHelper.RenderForm(formType, {onFormSubmit: this.handleFormSubmit})}
+                    {FormRenderHelper.RenderForm(
+                        formType, 
+                        {
+                            onFormSubmit: this.handleFormSubmit, 
+                            initialFormObj
+                        }
+                    )}
                 </DialogContent>
             </Dialog>
         );
@@ -72,7 +82,7 @@ export class PopupDialog extends Component<IProps, IState>{
         return (
             <>
                 <ListItem button onClick={this.handleDialogToggle}>
-                    <ListItemText primary="Create New Item" />
+                    {this.props.children}
                 </ListItem>
                 {this.renderDialog()}
             </>

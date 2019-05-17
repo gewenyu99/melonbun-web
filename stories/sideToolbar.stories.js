@@ -20,7 +20,7 @@ storiesOf('SideToolBar', module)
         <Grid container direction="row" justify="flex-end"spacing={16}>
             <Grid item xs={12} md={2}>
                 <SSideToolbar  
-                    detailsHref={'/post?title='}
+                    detailsHref={'/requestInfo?title='}
                     selectedItemId={boolean('is item being selected', true)?'id':null}
                     onItemDelete={action('Item_Delete')} 
                     onItemCreate={action('Item_Create')}

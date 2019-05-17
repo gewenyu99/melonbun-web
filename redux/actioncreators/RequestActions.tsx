@@ -43,3 +43,55 @@ export function createNewRequest(requestForm:IRequestForm) {
         });
     };
 }
+
+export function updateRequest(id:string, requestForm:IRequestForm) {
+
+    return function (dispatch, getState) {
+
+        return RequestServices.updateRequest(id, requestForm).then(
+            data => {
+                if(data) {
+                    dispatch(initializeRequestEntries());
+                    dispatch(NotificationActions.toastMessage("Request Updated. Please refresh page to view changes."))
+                }
+            }
+        )
+        .catch(function(error) {
+            console.log("Error: Failed to update request - ", error);
+        });
+    };
+}
+
+export function deleteRequest(id:string) {
+
+    return function (dispatch, getState) {
+
+        return RequestServices.deleteRequest(id).then(
+            data => {
+                if(data) {
+                    dispatch(initializeRequestEntries());
+                    dispatch(NotificationActions.toastMessage("Request Deleted"))
+                }
+            }
+        )
+        .catch(function(error) {
+            console.log("Error: Failed to delete request - ", error);
+        });
+    };
+}
+
+export function getRequest(id:string) {
+    
+    return function (dispatch, getState) {
+
+        dispatch(NotificationActions.fetching());
+        return RequestServices.getRequest(id)
+        .then((data)=>{
+            dispatch(NotificationActions.fetchingDone());
+            return data;
+        })
+        .catch(function(error) {
+            console.log("Error: Failed to get request - ", error);
+        });
+    };
+}

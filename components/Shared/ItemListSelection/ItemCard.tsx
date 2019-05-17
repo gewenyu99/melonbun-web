@@ -55,7 +55,7 @@ export const ItemCard = (props: IProps) => {
             </SelectableCard>
             
             <CardActions>
-                <Button size="small" color="primary" component={NextLink} href={`/post?title=${id}`}>
+                <Button size="small" color="primary" component={NextLink} href={`/requestInfo?title=${id}`}>
                     Details
                 </Button>
             </CardActions>

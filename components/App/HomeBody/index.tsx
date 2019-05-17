@@ -19,7 +19,7 @@ const HomeBody = (props: IProps) => {
         <>
             <Typography component="h3" variant="h3" gutterBottom>The Homepage</Typography>
             <ItemListSelection 
-                detailsHref={'/post?title='}
+                detailsHref={'/requestInfo?title='}
                 formType={FormType.ITEM} 
                 itemsBuffer={itemsBuffer}
                 onItemDelete={onItemDelete} 

@@ -19,7 +19,7 @@ const toolbarStyle = (theme:any)=> ({
 interface IProps {
     /** Id of currently selected card */
     selectedItemId?: string;
-    /** base link of card's details page. ie) '/post?title=' and an id will be appended */
+    /** base link of card's details page. ie) '/requestInfo?title=' and an id will be appended */
     detailsHref?: string;
     /** callback called when user delete an item */
     onItemDelete?: (id:any) => void;
@@ -40,7 +40,7 @@ export const SideToolbar = (props: IProps) => {
             <> 
                 {detailsHref && 
                 (
-                    //detailsHref is link to individual post in the form: `/post?title=` + 'id'
+                    //detailsHref is link to individual post in the form: `/requestInfo?title=` + 'id'
                     <ListItem button component={NextLink} href={detailsHref+selectedItemId}>
                         <ListItemIcon>
                             <InfoIcon />
@@ -55,7 +55,7 @@ export const SideToolbar = (props: IProps) => {
                         <ListItemIcon>
                             <DeleteIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Trash" />
+                        <ListItemText primary="Delete" />
                     </ListItem>
                 )}
             </>
@@ -69,7 +69,9 @@ export const SideToolbar = (props: IProps) => {
                 <PopupDialog 
                     onSubmit={onItemCreate}
                     formType={formType}
-                />
+                >
+                    <ListItemText primary="Create New Item" />
+                </PopupDialog>
                 <ListItem button>
                     <ListItemText primary="Share" />
                 </ListItem>

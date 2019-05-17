@@ -31,7 +31,7 @@ const FavoriesBody = (props: IProps) => {
             <Typography component="h3" variant="h3" gutterBottom>My Favorites</Typography>
             
             <RequestListSelection 
-                detailsHref={'/post?title='}
+                detailsHref={'/requestInfo?title='}
                 formType={FormType.REQUEST}
                 onItemDelete={()=>{}}
                 requestBuffer={favoriteRequestBuffer} 

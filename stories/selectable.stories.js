@@ -19,7 +19,7 @@ storiesOf('Selectable', module)
             const selectionComponent = selectableContainerHOC(<innerComponent/>)
             return (
                 <selectionComponent 
-                    detailsHref={'/post?title='} 
+                    detailsHref={'/requestInfo?title='} 
                     onItemDelete={action('Item_Delete')} 
                     onItemCreate={action('Item_Create')}
                 />
