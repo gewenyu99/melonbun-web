@@ -23,7 +23,7 @@ export const RequestList = (props: IProps) => {
             {requestBuffer.map(request =>{
                 const selected = selectedItemId ? (request.id == selectedItemId) : false;
                 return (
-                    <Grid key={request.id} item xs={12}>
+                    <Grid key={request.id} item md={4} xs={6}>
                             <RequestCard
                                 active={selected}
                                 onItemSelect={onItemSelect}

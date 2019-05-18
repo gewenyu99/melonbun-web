@@ -4,51 +4,37 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
-import Divider from '@material-ui/core/Divider';
+import CardHeader from '@material-ui/core/CardHeader';
+import ShareIcon  from '@material-ui/icons/Share';
+import CardActions from '@material-ui/core/CardActions';
+import Avatar from '@material-ui/core/Avatar';
 import {IRequestInfo} from '../../../redux/dataTypes/request'
 import Icon from '@material-ui/core/Icon';
-import classNames from 'classnames';
 import SelectableCard from '../Selectable/selectableCard';
 
 const cardStyle = (theme:any)=> ({
     card: {
-        display: 'flex',
-        flexDirection: 'row' as 'row',
-        height: 200,
+        maxWidth: 400,
     },
-    details:{
+    actions:{
         display: 'flex',
-        flexDirection: 'column' as 'column',
-        height: 200,
     },
-    flexGrow: {
-        flex: '1 0 auto',
+    status: {
+        marginLeft: 'auto',
     },
     image: {
-        width: 300,
+        height: 0,
+        paddingTop: '56.25%', // 16:9
     },
-    controls: {
-        height: 70,
-        display: 'flex',
-        alignItems: 'center',
-        paddingLeft: theme.spacing.unit*2,
-        paddingRight: theme.spacing.unit*2,
-    },
-    requestInfo: {
-        display: 'flex',
-        flexDirection: 'row' as 'row'
-    }
 });
 
 interface IProps{
     request: IRequestInfo
     classes: {
-        details: string;
-        controls: string;
+        status: string;
         image: string;
         card:string;
-        flexGrow: string;
-        requestInfo: string;
+        actions: string;
     }
     /** indicate if this request is in user's favorites */
     isFavorite: boolean;
@@ -83,61 +69,54 @@ export const RequestCard = (props: IProps) => {
     
     return(
         <Card className={classes.card}>
-            <CardMedia
-                className={classes.image}
-                image="/static/images/cards/apple.jpg"
-                title="Apple"
-            />
-            <div className={classNames(classes.details,classes.flexGrow)}>
-                <SelectableCard onCardSelect={onItemSelect} id={id} active={active}>
-                    <CardContent className={classes.flexGrow}>
-                        <div className={classes.requestInfo}>
-                            <Typography gutterBottom variant="caption" className={classes.flexGrow}>
-                                Requested By: {created_by}
-                            </Typography>
-                            <Typography gutterBottom variant="caption">
-                                {created_at}
-                            </Typography>
-                        </div>
-                        <Typography variant="h4">
-                            {name}
-                        </Typography>
+            <SelectableCard onCardSelect={onItemSelect} id={id} active={active}>
+                <>
+                    <CardHeader
+                        avatar={
+                            <Avatar aria-label="Recipe">
+                            {created_by}
+                            </Avatar>
+                        }
+                        title={name}
+                        subheader={created_at}
+                    />
+                    <CardMedia
+                        className={classes.image}
+                        image="/static/images/cards/apple.jpg"
+                        title="Apple"
+                    />
+                    <CardContent>
                         <Typography variant="body1" component="p">
                             {description}
                         </Typography>
                     </CardContent>
-                </SelectableCard>
-                <Divider variant="middle"/>
-                <div className={classes.controls}>
-                    <Typography variant="subtitle2" component="p" className={classes.flexGrow}>
-                        <IconButton
-                            color="inherit" 
-                            aria-label="Open drawer"
-                            onClick={toggleFavorite}
-                        >
-                            <Icon>{isFavorite?"favorite": "favorite_border"}</Icon>
-                        </IconButton>
-                    </Typography>
-                    <Typography variant="subtitle2" component="p">
-                        {status}
-                    </Typography>
-                </div>
-            </div>
-           
-            
+                </>
+            </SelectableCard>
+            <CardActions className={classes.actions} disableActionSpacing>
+                <IconButton
+                    color="inherit" 
+                    aria-label="Open drawer"
+                    onClick={toggleFavorite}
+                >
+                    <Icon>{isFavorite?"favorite": "favorite_border"}</Icon>
+                </IconButton>
+                <IconButton aria-label="Share">
+                    <ShareIcon />
+                </IconButton>
+                <Typography className={classes.status} variant="subtitle2" component="p">
+                    {status}
+                </Typography>
+            </CardActions>     
         </Card>
-        
     )
 }
 
 const defaultProps = {
     classes: {
-        details: '',
-        controls: '',
+        status: '',
         image: '',
         card:'',
-        flexGrow: '',
-        requestInfo: ''
+        actions: '',
     }
 };
 

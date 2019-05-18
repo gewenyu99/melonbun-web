@@ -17,7 +17,6 @@ const HomeBody = (props: IProps) => {
     const {onItemDelete, itemsBuffer, onItemCreate} = props;
     return (
         <>
-            <Typography component="h3" variant="h3" gutterBottom>The Homepage</Typography>
             <ItemListSelection 
                 detailsHref={'/requestInfo?title='}
                 formType={FormType.ITEM} 
