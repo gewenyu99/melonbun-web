@@ -20,7 +20,7 @@ export const ItemList = (props: IProps) => {
             {itemsBuffer.map(item =>{
                 const selected = selectedItemId ? (item.id == selectedItemId) : false;
                 return ( 
-                    <Grid key={item.id} item md={4} xs={6}>
+                    <Grid key={item.id} item md={4} xs={12}>
                         <ItemCard 
                             active={selected}
                             onItemSelect={onItemSelect}

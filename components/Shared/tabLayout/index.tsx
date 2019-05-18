@@ -10,7 +10,6 @@ import CircularIndeterminate from '../ProgressIndicator/circularIndeterminate';
 const TabLayoutStyle = (theme:any)=> ({
     root: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
     },
 });
 

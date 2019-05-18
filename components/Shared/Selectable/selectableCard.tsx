@@ -21,7 +21,7 @@ interface IState {
 
 const selectStyle = (theme:any)=> ({
     focusHighlight: {
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: '#DCDCDC',
     },
 });
 
